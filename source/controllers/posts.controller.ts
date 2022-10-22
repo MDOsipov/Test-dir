@@ -14,4 +14,12 @@ async function getPosts(req: Request, res: Response, next: NextFunction) {
     });
 }
 
-export default { getPosts };
+async function addPost(req: Request, res: Response, next: NextFunction) {
+    const newPost: post = req.body;
+    posts.push(newPost);
+    return res.status(200).json({
+        newPost: newPost
+    });
+}
+
+export default { getPosts, addPost };
